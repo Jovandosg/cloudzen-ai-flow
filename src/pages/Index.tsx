@@ -1,4 +1,3 @@
-
 import React from "react";
 import IAForm from "@/components/IAForm";
 import NichosGrid from "@/components/NichosGrid";
@@ -62,11 +61,10 @@ const Index = () => {
 
       {/* Rodapé */}
       <footer className="w-full pt-10 pb-6 text-center text-sm text-muted-foreground mt-12">
-        © {new Date().getFullYear()} CloudZen. IA que conecta seu negócio.
+        © {new Date().getFullYear()} CloudZen. IA que conecta o seu negócio.
       </footer>
     </div>
   );
 };
 
 export default Index;
-

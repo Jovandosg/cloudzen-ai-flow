@@ -37,18 +37,36 @@ const nichos = [
 ];
 
 const NichosGrid: React.FC = () => (
-  <section className="py-12 max-w-6xl mx-auto">
-    <h2 className="text-2xl font-semibold text-primary text-center mb-6">
-      Nichos de Atuação dos <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 text-transparent bg-clip-text font-bold">Agentes CloudZen</span>
+  <section className="py-16 max-w-6xl mx-auto px-4">
+    <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+      Nichos de Atuação dos <span className="bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-transparent bg-clip-text font-extrabold">Agentes CloudZen</span>
     </h2>
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-      {nichos.map((nich, i) => (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {nichos.map((nicho, i) => (
         <div
-          className="bg-background/70 border border-border rounded-lg p-4 flex items-center font-medium text-muted-foreground shadow hover:shadow-md hover:bg-background/90 transition"
+          className="group relative bg-white/80 backdrop-blur-sm border border-gray-100/50 rounded-xl p-5 flex items-center font-medium text-gray-700 shadow-sm hover:shadow-lg hover:shadow-blue-400/20 transition-all duration-500 hover:-translate-y-1 cursor-pointer overflow-hidden"
+          style={{ 
+            animationDelay: `${i * 0.05}s`,
+          }}
           key={i}
         >
-          <span className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 mr-3 block" />
-          {nich}
+          {/* Efeito de gradiente no hover */}
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-50/50 to-purple-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          
+          {/* Indicador colorido */}
+          <span className="relative w-3 h-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 mr-4 flex-shrink-0 group-hover:scale-125 transition-transform duration-300 shadow-sm" />
+          
+          {/* Texto */}
+          <span className="relative group-hover:text-gray-800 transition-colors duration-300">
+            {nicho}
+          </span>
+          
+          {/* Ícone de seta que aparece no hover */}
+          <div className="relative ml-auto opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+            <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" className="text-blue-500">
+              <path d="M5 12l6-6-6-6"/>
+            </svg>
+          </div>
         </div>
       ))}
     </div>

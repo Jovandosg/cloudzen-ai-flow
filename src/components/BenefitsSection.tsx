@@ -34,16 +34,28 @@ const benefits = [
 
 const BenefitsSection: React.FC = () => (
   <section className="py-10 max-w-6xl mx-auto">
-    <h2 className="text-2xl md:text-3xl font-extrabold mb-6 text-center bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 text-transparent bg-clip-text">Benefícios do Atendimento Inteligente CloudZen</h2>
+    <h2 className="text-2xl md:text-3xl font-extrabold mb-8 text-center bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 text-transparent bg-clip-text">
+      Benefícios do Atendimento Inteligente CloudZen
+    </h2>
     <div className="grid grid-cols-1 md:grid-cols-4 gap-7">
       {benefits.map((b, idx) => (
         <div
-          className="flex flex-col items-center bg-background/70 rounded-xl p-6 shadow-lg shadow-blue-400/10 border border-border hover:scale-105 transition-transform"
+          className="group flex flex-col items-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg shadow-blue-400/10 border border-gray-100/50 hover:shadow-xl hover:shadow-blue-400/20 transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+          style={{ 
+            animationDelay: `${idx * 0.1}s`,
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.95) 100%)'
+          }}
           key={idx}
         >
-          <div className="mb-3">{b.icon}</div>
-          <div className="font-semibold text-lg mb-1 text-primary">{b.title}</div>
-          <div className="text-sm text-muted-foreground text-center">{b.desc}</div>
+          <div className="mb-4 transform group-hover:scale-110 transition-transform duration-300 group-hover:animate-pulse">
+            {b.icon}
+          </div>
+          <div className="font-semibold text-lg mb-2 text-primary group-hover:text-blue-600 transition-colors duration-300">
+            {b.title}
+          </div>
+          <div className="text-sm text-muted-foreground text-center group-hover:text-gray-700 transition-colors duration-300">
+            {b.desc}
+          </div>
         </div>
       ))}
     </div>

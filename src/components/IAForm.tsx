@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,15 +19,33 @@ const IAForm: React.FC = () => {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
-    // Simulação de envio; troque para integração real se necessário
-    setTimeout(() => {
+    
+    try {
+      // Enviar dados para o Webhook do Make
+      await fetch('https://hook.us2.make.com/vub82jji8v53lf62ktndxyqm76hfwryx', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nome: form.nome,
+          email: form.email,
+          whatsapp: form.whatsapp
+        })
+      });
+
       setLoading(false);
       toast({
         title: "Solicitação enviada!",
         description: "Entraremos em contato em breve.",
       });
       setForm({ nome: "", email: "", whatsapp: "" });
-    }, 1200);
+    } catch (error) {
+      setLoading(false);
+      toast({
+        title: "Erro ao enviar",
+        description: "Tente novamente em alguns instantes.",
+        variant: "destructive"
+      });
+    }
   }
 
   return (
